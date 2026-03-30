@@ -1,0 +1,19 @@
+//@version=5
+indicator("Multi-Timeframe Level Detector", overlay=true)
+
+// User input for date and time
+input_time = input.time(timestamp("2026-03-30 15:44:32 UTC"), title="Input Date and Time")
+
+// Function to calculate levels for a specific timeframe
+calcLevels(tf) => 
+    [high_level, low_level] = request.security(syminfo.tickerid, tf, [high, low])
+    [high_level, low_level]
+
+// Array of timeframes
+timeframes = ["5", "15", "30", "45", "60", "240", "D", "W", "M", "6M"]
+
+// Loop through each timeframe and plot levels
+for tf in timeframes
+    [high_level, low_level] = calcLevels(tf)
+    label.new(bar_index, high_level, "High: " + str.tostring(high_level), color=color.green)
+    label.new(bar_index, low_level, "Low: " + str.tostring(low_level), color=color.red)
