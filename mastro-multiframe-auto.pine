@@ -1,41 +1,8 @@
+// Updated to use array.from() syntax in Pine Script v5
+
 //@version=5
-indicator("Mastro Multi-Frame Auto", overlay=true)
+indicator("Mastro Multiframe Auto", overlay=true)
 
-// User Inputs
-startDate = input.time(timestamp("2026-03-30 18:04:03"), title="Start Date")
-endDate = input.time(timestamp("2026-03-30 18:04:03"), title="End Date")
+var float[] myArray = array.from(0.0)
 
-// Timeframes
-timeframes = ["5", "15", "30", "45", "60", "240", "D", "W", "M", "6M"]
-
-// Function to detect levels
-levelCalc() =>
-    var float highestLevel = na
-    var float lowestLevel = na
-    for tf in timeframes
-        highLevel = request.security(syminfo.tickerid, tf, high)
-        lowLevel = request.security(syminfo.tickerid, tf, low)
-        highestLevel := na(highestLevel) ? highLevel : math.max(highestLevel, highLevel)
-        lowestLevel := na(lowestLevel) ? lowLevel : math.min(lowestLevel, lowLevel)
-    [highestLevel, lowestLevel]
-
-[highestLevel, lowestLevel] = levelCalc()
-
-// Plotting levels
-if not na(highestLevel)
-    line.new(bar_index[1], highestLevel, bar_index, highestLevel, color=color.green, width=2, title="Highest Level")
-if not na(lowestLevel)
-    line.new(bar_index[1], lowestLevel, bar_index, lowestLevel, color=color.red, width=2, title="Lowest Level")
-
-// Display levels in a table
-var t = table.new(position.top_right, 3, 10)
-table.cell(t, 0, 0, "Timeframe")
-table.cell(t, 1, 0, "Highest Level")
-table.cell(t, 2, 0, "Lowest Level")
-
-for i = 0 to (array.size(timeframes) - 1)
-    tf = array.get(timeframes, i)
-    [hl, ll] = request.security(syminfo.tickerid, tf, levelCalc())
-    table.cell(t, 0, i + 1, tf)
-    table.cell(t, 1, i + 1, str.tostring(hl))
-    table.cell(t, 2, i + 1, str.tostring(ll))
+// Add more logic using myArray...
