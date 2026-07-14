@@ -221,10 +221,10 @@ if isTargetBar3
     table.cell(tablo, 3, 3, str.tostring(h1_3, format.mintick), text_color=color.white, bgcolor=color.new(color.green, 70))
     table.cell(tablo, 3, 4, str.tostring(l1_3, format.mintick), text_color=color.white, bgcolor=color.new(color.green, 70))
 
-// ============ PLOTS ============
-plot(not na(h1_1) ? h1_1 : na, title="H1_" + twoDigit(SAAT_1) + twoDigit(DAK_1), linewidth=1, display=display.none, color=color.blue)
-plot(not na(l1_1) ? l1_1 : na, title="L1_" + twoDigit(SAAT_1) + twoDigit(DAK_1), linewidth=1, display=display.none, color=color.blue)
-plot(not na(h1_2) ? h1_2 : na, title="H1_" + twoDigit(SAAT_2) + twoDigit(DAK_2), linewidth=1, display=display.none, color=color.orange)
-plot(not na(l1_2) ? l1_2 : na, title="L1_" + twoDigit(SAAT_2) + twoDigit(DAK_2), linewidth=1, display=display.none, color=color.orange)
-plot(not na(h1_3) ? h1_3 : na, title="H1_" + twoDigit(SAAT_3) + twoDigit(DAK_3), linewidth=1, display=display.none, color=color.green)
-plot(not na(l1_3) ? l1_3 : na, title="L1_" + twoDigit(SAAT_3) + twoDigit(DAK_3), linewidth=1, display=display.none, color=color.green)
+// ============ PLOTS - Using constant strings for titles ============
+plot(not na(h1_1) ? h1_1 : na, title="H1_Time1", linewidth=1, display=display.none, color=color.blue)
+plot(not na(l1_1) ? l1_1 : na, title="L1_Time1", linewidth=1, display=display.none, color=color.blue)
+plot(not na(h1_2) ? h1_2 : na, title="H1_Time2", linewidth=1, display=display.none, color=color.orange)
+plot(not na(l1_2) ? l1_2 : na, title="L1_Time2", linewidth=1, display=display.none, color=color.orange)
+plot(not na(h1_3) ? h1_3 : na, title="H1_Time3", linewidth=1, display=display.none, color=color.green)
+plot(not na(l1_3) ? l1_3 : na, title="L1_Time3", linewidth=1, display=display.none, color=color.green)
